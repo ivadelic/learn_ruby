@@ -21,25 +21,44 @@ end
 
 LITTLE_WORDS = %w(and in the of a an over)
 
-def titleize(title)
-	words = title.split
+# def titleize(title)
+# 	words = title.split
 
 	
-	capitalized_words = words.map.with_index do |word, index|
-		first_word  = index == 0
-		little_word = LITTLE_WORDS.include?(word)
+# 	capitalized_words = words.map.with_index do |word, index|
+# 		first_word  = index == 0
+# 		little_word = LITTLE_WORDS.include?(word)
 		
-		# Make it big if....
-		if first_word or not little_word 
-			word.capitalize
-		else
+# 		# Make it big if....
+# 		if first_word or not little_word 
+# 			word.capitalize
+# 		else
+# 			word
+# 		end
+# 	end
+
+# 	# title.split.map(&:capitalize).join(' ')
+# 	capitalized_words.join ' '
+# end
+
+
+def titleize(title)
+	words = title.split
+	capitalized_words = words.map do |word|
+		little_word = LITTLE_WORDS.include?(word)
+		# little_word ? word : word.capitalize
+
+		if little_word 
 			word
+		else
+			word.capitalize
 		end
 	end
+	capitalized_words.first.capitalize!
 
-	# title.split.map(&:capitalize).join(' ')
-	capitalized_words.join ' '
+	capitalized_words.join(' ')
 end
+
 
 
 # Dog = Class.new {
