@@ -7,7 +7,6 @@ class TestFriend < MiniTest::Test
   def setup
     @friend = Friend.new
   end
-
   # greet
   def test_greets_someone
     assert_equal "Hello Bob!", @friend.greet("Bob")
